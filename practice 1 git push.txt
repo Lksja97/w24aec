@@ -1,0 +1,26 @@
+Dear Students, 
+Step 1
+please practice follow  instruction: 
+1: create new git repository with a name as you wish on GitHub
+2: please DO NOT click on add Readme checkbox!
+3: clone the project on your PC , 
+
+
+Step 2: 
+please practice follow  instruction: 
+1: create new git repository with a name my_web_prog on GitHub
+2: please Click  on add Readme checkbox!
+3: clone the project on your PC , 
+4: create index.html
+5: push it on git Repository.
+
+
+############################
+connamds you may need: 
+git status
+git add . 
+git commit -m "commit message"
+git push
+
+
+and please always control your current Branch name!!
