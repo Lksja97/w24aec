@@ -1,0 +1,24 @@
+1: create github repository and  name it as you wish
+2: erstellen 3 html Site
+    1: index.html
+    2: about.html
+    3: contact.html
+
+in index : 
+        h1 tag
+        p tag
+        hr tag
+        link to other pages
+
+in about 
+        ul , li tag
+        table 
+        img tag
+
+contact just h1 tag contact us
+
+all page shall be liked together
+
+push project 
+
+delete project local and clone again
