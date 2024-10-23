@@ -1,6 +1,6 @@
 <html>
 <body>
-<?php  include("navbar.php") ?>
+<?php  require_once("navbar.php") ?>
     it is contact page
 </body>
 </html>
