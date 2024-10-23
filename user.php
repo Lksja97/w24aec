@@ -1,6 +1,6 @@
 <html>
 <body>
     <?php  include("navbar.php") ?>
-    hi
+    user page
 </body>
 </html>
