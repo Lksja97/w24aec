@@ -1,6 +1,3 @@
-<html>
-<body>
-<?php  require_once("navbar.php") ?>
+<?php  require_once(".\layout\header.php") ?>
     it is contact page
-</body>
-</html>
+<?php  require_once(".\layout\\footer.php") ?>
