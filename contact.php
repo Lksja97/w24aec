@@ -8,6 +8,6 @@
         </ul>
     </nav>
     
-    it is about page
+    it is contact page
 </body>
 </html>
