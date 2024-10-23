@@ -1,0 +1,21 @@
+/* ohne punkt  oder #  ist Tag name*/
+body{
+    background-color: black;
+    color: wheat;
+}
+a{
+    color: white;
+}
+/*class fängt mit . */
+.myGreen{
+    color: greenyellow;
+}
+
+.myBgWhite{
+    background-color: white;
+}
+/* id fängt mit # */
+#bravo{
+ color:red;
+ background: white;
+}
