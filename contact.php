@@ -1,34 +1,13 @@
 <?php  
 require_once(".\layout\header.php");
-require_once(".\app\Message.php");
-// $visitor_message ist ein Instance von Objekt Message , 
-//$visitor_message ist jetzt in Ram!!
-
-if(isset($_POST["body"]))
-{
-    $visitor_message = new Message();
-    $visitor_message->body = $_POST["body"];
-    $visitor_message->mobileNumber = $_POST["visitor_phone_number"];
-    $visitor_message->senderEmail = $_POST["visitor_email"];
-    $visitor_message->senderName = $_POST["visitor_name"];    
-    unset($_POST);
-    
-    $send_result = $visitor_message->send(); 
-    if($send_result){
-        echo "successful sended message";
-    }
-    else
-    {
-        echo "sorry try later!";
-    }
-
-}
-
+require_once(".\app\controller\contactController.php");
+$controller = new ContactController();
+$result = $controller->sendMessage();
 ?>
     
 
 <h1>Contact us form</h1>
-
+<?=$result?>
 <form  method="post">
     <textarea name="body" placeholder="your message" required minlength="10" maxlength="900"></textarea>
     <br/>
