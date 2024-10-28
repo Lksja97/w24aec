@@ -89,14 +89,11 @@ foreach($person as $item)
 
 }
 $counter = 0;
-while(1)
+while($counter < 200)
 {
     echo "hi <br>";
     $counter++;
-    if($counter > 200)
-    {
-        break;
-    }
+
 }
 
 
