@@ -6,11 +6,14 @@ require 'ConnectDb.php';
 use Firebase\JWT\JWT;
 use Dotenv\Dotenv;
 
+header('Content-Type: application/json');
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $conn = (new ConnectDb())->getConnection();
-
+if(isset($_POST['username']))
+{
 // Assume user input is sanitized and validated
 $username = $_POST['username'];
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -29,3 +32,8 @@ $payload = [
 $jwt = JWT::encode($payload, $secretKey, 'HS256');
 
 echo json_encode(['message' => 'User registered', 'token' => $jwt]);
+die();
+}
+echo json_encode("need post username and password");
+
+

@@ -8,6 +8,7 @@ use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+header('Content-Type: application/json');
 
 function authenticate() {
     $secretKey = $_ENV['JWT_SECRET'];
