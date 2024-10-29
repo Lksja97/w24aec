@@ -22,8 +22,25 @@ function my_divide(){
 
 }
 
+var user = {
+   name: "ali",
+   family: "Khorandfard",
+   age: 20,
+   my_arr: ["b1","b2","b3"],
+   second :  {
+      name: "Roy",
+      family: "Faust",
+      ar_in_obj: ["jlkajdlkadl"]
+   }
+}
 
-$( document ).ready(function() {
+var array_objects = [user,user,user,33];
+
+
+
+window.alert(array_objects[3]);
+
+$(document).ready(function() {
    $("#project_one").hide();
    $("#btn_show_hide").on("click",function(){
       $("#project_one").toggle("medium");
