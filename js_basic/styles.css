@@ -25,6 +25,15 @@ nav a {
     color: white;
     margin: 0 10px;
     text-decoration: none;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: #067189;
+}
+
+nav a:hover{
+    color: red;
+    background-color: #1ab3d6;
+    border-radius: 3px;
 }
 
 section {
