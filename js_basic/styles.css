@@ -50,3 +50,14 @@ footer {
     padding: 10px;
 }
 
+.fontHeader{
+    font-size: large;
+    font-weight: bold;
+}
+
+#ul_show li {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+}
+
