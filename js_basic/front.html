@@ -2,34 +2,58 @@
 <html>
 
 <head>
-
+    <script src="jquery.js"></script>
+    <script src="fetchData.js"></script>
 </head>
 
 <body>
-    it i json api fetch
-
     <div>
-        <ul>
+        <ul id="ul_show">
 
         </ul>
     </div>
 </body>
-
 <script>
-    var api_response;
-    async function fetchData() {
-        try {
-            let response = await fetch('https://jsonplaceholder.typicode.com/posts');
-            api_response = await response.json();
+    //definition ein function verbinden zu api ,nimmt data und erfüllt ul internal data 
+    function getApiData() {
+        /*$ ist mark for beginn JQuery
+         getJSON(Ziel Api) ist schon geschribnette method in JQuery er verbindet zu api 
+            und convertiert json response text to Javascript Object. 
+         */
+        $.getJSON("https://jsonplaceholder.typicode.com/posts")
+            /*weil braucht zeit von api anruf bis api response , dise .done() bedeuted wenn response von api 
+            ist da , then ruft thise function 
+            so in realität getJSON() construktur ist wie folgen
+            $.getJSON(url).done(function(data){...hiere kommt logic ...}).fail(function(error){..hiere kommt logic..});
+            */
 
-            window.alert(JSON.stringify(api_response, null, 2));
+            /*succefull data fetch from api */
+            .done(function (data) {
+                /*log data in console*/
+                console.log(data);
+                /* define ein variable zu speichern result */
+                let listItems = "";
+                /* hiere wir sagen für jede object in data als item mach es*/
+                data.forEach(function (item) {
+                    /*beachten Sie über `` , dise Kareter heißt backtick!! da it kein ' single qoute!! single Qoute funktioniert nicht!*/
+                    listItems += `<li>${item.title}</li>`;
+                });
 
-            console.log(api_response);
-        } catch (error) {
-            window.alert(error);
-        }
+                /*jetzt wir sagen fill element mit id #ul_show mit html tags! da wir in line 39 gebaut!*/
+                $("#ul_show").html(listItems);
+                /*finish!*/
+            })
+            /*in fall etwas falsch passiert, wir schreiben error in console und Zeigen wir error in ul li*/
+            .fail(function (error) {
+                console.error("Error:", error);
+                $("#ul_show").html("<li>Error loading data</li>");
+            });
+            /*finih*/
     }
-    fetchData();
+
+    //jetzt wir rufen function!
+    getApiData();
+
 </script>
 
 </html>
