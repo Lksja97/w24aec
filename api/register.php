@@ -1,21 +1,31 @@
 <?php
 // register.php
 
-require 'vendor/autoload.php'; // Autoload Composer dependencies
-require 'ConnectDb.php'; // Include the ConnectDb class
+require 'vendor/autoload.php';
+require 'ConnectDb.php';
+use Firebase\JWT\JWT;
+use Dotenv\Dotenv;
 
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-$conn = (new ConnectDb())->getConnection(); // Get the database connection
+$conn = (new ConnectDb())->getConnection();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    $username = $data['username'];
-    $password = password_hash($data['password'], PASSWORD_BCRYPT); // Hash the password
+// Assume user input is sanitized and validated
+$username = $_POST['username'];
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-    if ($stmt->execute([$username, $password])) {
-        echo json_encode(['message' => 'User registered successfully']);
-    } else {
-        echo json_encode(['message' => 'User registration failed']);
-    }
-}
+// Register user
+$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+$stmt->execute([$username, $password]);
+
+// Generate JWT token
+$secretKey = $_ENV['JWT_SECRET'];
+$payload = [
+    'username' => $username,
+    'iat' => time(),
+    'exp' => time() + 3600
+];
+$jwt = JWT::encode($payload, $secretKey, 'HS256');
+
+echo json_encode(['message' => 'User registered', 'token' => $jwt]);

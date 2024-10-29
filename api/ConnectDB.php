@@ -1,25 +1,22 @@
 <?php
 // ConnectDb.php
 
+require 'vendor/autoload.php';
+use Dotenv\Dotenv;
+
 class ConnectDb {
-    private $host = 'localhost';
-    private $dbname = 'user_auth';
-    private $username = 'your_db_username'; // Change this to your DB username
-    private $password = 'your_db_password'; // Change this to your DB password
     private $conn;
 
     public function __construct() {
-        $this->connect();
-    }
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
 
-    private function connect() {
-        try {
-            $this->conn = new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo json_encode(['message' => 'Database connection failed: ' . $e->getMessage()]);
-            exit;
-        }
+        $this->conn = new PDO(
+            "mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'],
+            $_ENV['DB_USER'],
+            $_ENV['DB_PASS']
+        );
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function getConnection() {

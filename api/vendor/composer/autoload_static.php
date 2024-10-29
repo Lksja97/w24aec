@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit981aa24c3e3848373bf70fee308894e5
+class ComposerStaticInit8891d92c60d63fc66d4f5f941bbf9783
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
@@ -20,6 +20,16 @@ class ComposerStaticInit981aa24c3e3848373bf70fee308894e5
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'D' => 
+        array (
+            'Dotenv' => 
+            array (
+                0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -27,9 +37,10 @@ class ComposerStaticInit981aa24c3e3848373bf70fee308894e5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit981aa24c3e3848373bf70fee308894e5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit981aa24c3e3848373bf70fee308894e5::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit981aa24c3e3848373bf70fee308894e5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8891d92c60d63fc66d4f5f941bbf9783::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8891d92c60d63fc66d4f5f941bbf9783::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8891d92c60d63fc66d4f5f941bbf9783::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit8891d92c60d63fc66d4f5f941bbf9783::$classMap;
 
         }, null, ClassLoader::class);
     }
