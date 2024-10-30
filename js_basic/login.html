@@ -15,18 +15,35 @@
             margin: 0;
         }
         .container {
-            display: flex;
+            display: flex; /* Changed to flex for side-by-side layout */
             width: 800px;
             background: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Padding around the container */
+            flex-direction: column; /* Default to column for Go Home link */
+        }
+        .go-home {
+            margin-bottom: 20px; /* Space between link and forms */
+            text-align: center; /* Center the Go Home link */
+            text-decoration: none; /* Remove underline */
+            color: #007bff; /* Link color */
+            font-weight: bold; /* Make link bold */
+        }
+        .go-home:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        .form-container {
+            display: flex; /* Use flex for the forms container */
+            justify-content: space-between; /* Space between forms */
+            width: 100%; /* Full width of the container */
         }
         .form {
-            flex: 1;
+            flex: 1; /* Each form takes equal space */
             padding: 20px;
             border: 1px solid #ccc; /* Add border to each form */
             border-radius: 5px;
-            margin: 10px; /* Add margin for space between forms */
+            margin: 10px; /* Margin for space between forms */
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
         h2 {
@@ -55,26 +72,32 @@
     </style>
 </head>
 <body>
-
+    
     <div class="container">
-        <!-- Login Form -->
-        <div class="form" id="login">
-            <h2>Login</h2>
-            <form action="login_action.php" method="POST">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+        <!-- Go Home Link -->
+        <a href="index.html" class="go-home">Go Home</a>
 
-        <!-- Registration Form -->
-        <div class="form" id="register">
-            <h2>Register</h2>
-            <form action="register_action.php" method="POST">
-                <input type="text" name="register_username" placeholder="Username" required>
-                <input type="password" name="register_password" placeholder="Password" required>
-                <button type="submit">Register</button>
-            </form>
+        <!-- Forms Container -->
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form" id="login">
+                <h2>Login</h2>
+                <form action="login_action.php" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form" id="register">
+                <h2>Register</h2>
+                <form action="register_action.php" method="POST">
+                    <input type="text" name="register_username" placeholder="Username" required>
+                    <input type="password" name="register_password" placeholder="Password" required>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
         </div>
     </div>
 
